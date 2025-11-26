@@ -1,0 +1,19 @@
+# Dependency (File Library Sampah)
+node_modules/
+
+# Environment Variables (RAHASIA - Jangan diupload)
+.env
+
+# WhatsApp Session (Data Login WA - Jangan diupload)
+sessions/
+.wwebjs_auth/
+.wwebjs_cache/
+
+# System Files (Sampah macOS)
+.DS_Store
+._*
+
+# Logs (File Catatan Error)
+npm-debug.log*
+logs/
+*.log
