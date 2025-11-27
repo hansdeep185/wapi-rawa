@@ -1,0 +1,1904 @@
+{
+  "info": {
+    "name": "WhatsApp AI Bot API - Complete",
+    "description": "Complete API Collection for WhatsApp AI Bot with Contact Analysis",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "2.0.0"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('token', jsonData.token);",
+                  "    console.log('Token saved:', jsonData.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"user1\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "register"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "WhatsApp Operations",
+      "item": [
+        {
+          "name": "Get Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/whatsapp/status",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "status"]
+            }
+          }
+        },
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"6281234567890\",\n    \"message\": \"Hello from API!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/whatsapp/send",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "send"]
+            }
+          }
+        },
+        {
+          "name": "Send Media",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "phone",
+                  "value": "6281234567890",
+                  "type": "text"
+                },
+                {
+                  "key": "caption",
+                  "value": "Check this out!",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/whatsapp/send-media",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "send-media"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/whatsapp/logout",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "Get All Groups",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/whatsapp/groups",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "groups"]
+            }
+          }
+        },
+        {
+          "name": "Search Groups",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/whatsapp/groups/search?name=IT",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "groups", "search"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "IT"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Send to Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"groupId\": \"120363411346494368@g.us\",\n    \"message\": \"Hello team!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/whatsapp/send-to-group",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "send-to-group"]
+            }
+          }
+        },
+        {
+          "name": "Get Group Info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/whatsapp/groups/:groupId",
+              "host": ["{{base_url}}"],
+              "path": ["whatsapp", "groups", ":groupId"],
+              "variable": [
+                {
+                  "key": "groupId",
+                  "value": "120363411346494368@g.us"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "item": [
+        {
+          "name": "List Contacts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts?page=1&limit=20&search=",
+              "host": ["{{base_url}}"],
+              "path": ["contacts"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Contact by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contact Analysis",
+      "item": [
+        {
+          "name": "Analyze Contact (AI)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/analyze",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "analyze"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "AI analysis: personality, interests, lead score, buying signals, pain points, recommendations"
+          }
+        },
+        {
+          "name": "Get Contact Analysis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/analysis",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "analysis"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Batch Analyze",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"contactIds\": [\"uuid1\", \"uuid2\", \"uuid3\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contacts/batch-analyze",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", "batch-analyze"]
+            }
+          }
+        },
+        {
+          "name": "Update Contact",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"leadStatus\": \"hot\",\n    \"leadScore\": 85,\n    \"tags\": [\"enterprise\", \"high-priority\"],\n    \"notes\": \"Follow up needed\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contacts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"note\": \"Productive call. Interested in premium plan.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/notes",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "notes"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Custom Fields",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fields\": {\n        \"company\": \"ABC Corp\",\n        \"position\": \"CTO\",\n        \"industry\": \"Technology\",\n        \"budget\": \"50000-100000\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/custom-fields",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "custom-fields"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Assign to User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": \"user_uuid_here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/assign",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "assign"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Contacts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/filter?leadStatus=hot&leadScoreMin=70&tags=enterprise&page=1&limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", "filter"],
+              "query": [
+                {
+                  "key": "leadStatus",
+                  "value": "hot"
+                },
+                {
+                  "key": "leadScoreMin",
+                  "value": "70"
+                },
+                {
+                  "key": "leadScoreMax",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "assignedTo",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "tags",
+                  "value": "enterprise"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Top Leads",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/top-leads?limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", "top-leads"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Conversation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/contacts/:id/conversation?limit=100&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["contacts", ":id", "conversation"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Messages",
+      "item": [
+        {
+          "name": "List Messages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/messages?page=1&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["messages"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get by Contact",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/messages/contact/:contactId?page=1&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["messages", "contact", ":contactId"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Configuration",
+      "item": [
+        {
+          "name": "List Configs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ai/configs",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "configs"]
+            }
+          }
+        },
+        {
+          "name": "Create Config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Customer Service\",\n    \"provider\": \"gemini\",\n    \"model\": \"gemini-pro\",\n    \"apiKey\": \"your_api_key\",\n    \"systemPrompt\": \"Anda customer service yang ramah.\",\n    \"temperature\": 0.7,\n    \"maxTokens\": 1000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/configs",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "configs"]
+            }
+          }
+        },
+        {
+          "name": "Update Config",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"systemPrompt\": \"Updated prompt\",\n    \"temperature\": 0.8\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ai/configs/:id",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "configs", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Activate Config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ai/configs/:id/activate",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "configs", ":id", "activate"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Test Config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ai/configs/:id/test",
+              "host": ["{{base_url}}"],
+              "path": ["ai", "configs", ":id", "test"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Knowledge Base",
+      "item": [
+        {
+          "name": "List Knowledge",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/knowledge?page=1&limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["knowledge"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Knowledge",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Pricing Info\",\n    \"content\": \"Product A: $100\\nProduct B: $150\",\n    \"category\": \"pricing\",\n    \"tags\": [\"price\", \"product\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/knowledge",
+              "host": ["{{base_url}}"],
+              "path": ["knowledge"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/stats/dashboard",
+              "host": ["{{base_url}}"],
+              "path": ["stats", "dashboard"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bot Settings",
+      "item": [
+        {
+          "name": "Initialize Default Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/settings/initialize",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "settings", "initialize"]
+            },
+            "description": "Initialize bot settings with default values (Admin only)"
+          }
+        },
+        {
+          "name": "Get All Settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/settings",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "settings"]
+            },
+            "description": "Get all bot settings"
+          }
+        },
+        {
+          "name": "Get Specific Setting",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/settings/:key",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "settings", ":key"],
+              "variable": [
+                {
+                  "key": "key",
+                  "value": "auto_reply_enabled"
+                }
+              ]
+            },
+            "description": "Get specific setting by key"
+          }
+        },
+        {
+          "name": "Update Setting",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"value\": true,\n    \"description\": \"Enable auto-reply feature\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/settings/:key",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "settings", ":key"],
+              "variable": [
+                {
+                  "key": "key",
+                  "value": "auto_reply_enabled"
+                }
+              ]
+            },
+            "description": "Update a specific setting"
+          }
+        },
+        {
+          "name": "Batch Update Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"settings\": {\n        \"auto_reply_enabled\": true,\n        \"business_hours_enabled\": true,\n        \"reply_in_groups\": false,\n        \"max_replies_per_contact\": 15\n    }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/settings/batch",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "settings", "batch"]
+            },
+            "description": "Update multiple settings at once"
+          }
+        },
+        {
+          "name": "Get Bot Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/status",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "status"]
+            },
+            "description": "Get bot status summary (auto-reply, business hours, etc)"
+          }
+        },
+        {
+          "name": "Toggle Auto-Reply",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enabled\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/auto-reply/toggle",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "auto-reply", "toggle"]
+            },
+            "description": "Turn auto-reply ON or OFF"
+          }
+        },
+        {
+          "name": "Update Business Hours",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enabled\": true,\n    \"start\": \"08:00\",\n    \"end\": \"18:00\",\n    \"days\": [1, 2, 3, 4, 5]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/business-hours",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "business-hours"]
+            },
+            "description": "Update business hours settings (days: 0=Sunday, 6=Saturday)"
+          }
+        },
+        {
+          "name": "Update Out of Office",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enabled\": true,\n    \"message\": \"Terima kasih atas pesan Anda. Kami sedang di luar jam kerja. Kami akan membalas pada hari kerja berikutnya.\",\n    \"useAI\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/out-of-office",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "out-of-office"]
+            },
+            "description": "Update out of office settings"
+          }
+        },
+        {
+          "name": "Update Stop Keywords",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"keywords\": [\"STOP\", \"BERHENTI\", \"UNSUBSCRIBE\", \"CANCEL\", \"JANGAN\"],\n    \"stopMessage\": \"Anda telah berhenti dari layanan otomatis. Untuk mengaktifkan kembali, kirim pesan START.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/stop-keywords",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "stop-keywords"]
+            },
+            "description": "Update keywords that stop the bot from replying"
+          }
+        },
+        {
+          "name": "Update Require Human Keywords",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"keywords\": [\"MANUSIA\", \"HUMAN\", \"OPERATOR\", \"AGENT\", \"CS\", \"CUSTOMER SERVICE\"],\n    \"message\": \"Baik, saya akan menghubungkan Anda dengan tim kami. Mohon tunggu sebentar.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/require-human-keywords",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "require-human-keywords"]
+            },
+            "description": "Update keywords that trigger human takeover"
+          }
+        },
+        {
+          "name": "Update Reply Limits",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"maxRepliesPerContact\": 20,\n    \"maxConversationTurns\": 30\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/bot/reply-limits",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "reply-limits"]
+            },
+            "description": "Update maximum replies per contact and conversation turns (0 = unlimited)"
+          }
+        },
+        {
+          "name": "Stop Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/contacts/:contactId/stop",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "contacts", ":contactId", "stop"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Stop bot from replying to specific contact"
+          }
+        },
+        {
+          "name": "Start Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/contacts/:contactId/start",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "contacts", ":contactId", "start"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Allow bot to reply to specific contact again"
+          }
+        },
+        {
+          "name": "Get Stopped Contacts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bot/stopped-contacts",
+              "host": ["{{base_url}}"],
+              "path": ["bot", "stopped-contacts"]
+            },
+            "description": "Get list of contacts that have stopped the bot"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Message Templates",
+      "item": [
+        {
+          "name": "Initialize Default Templates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/initialize",
+              "host": ["{{base_url}}"],
+              "path": ["templates", "initialize"]
+            },
+            "description": "Initialize with default templates (Admin only)"
+          }
+        },
+        {
+          "name": "Get All Templates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates?category=&isActive=&search=",
+              "host": ["{{base_url}}"],
+              "path": ["templates"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "",
+                  "description": "Filter by category: greeting, out_of_office, faq, general, custom"
+                },
+                {
+                  "key": "isActive",
+                  "value": "",
+                  "description": "Filter by active status: true or false"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Search in name or content"
+                }
+              ]
+            },
+            "description": "Get all message templates with optional filters"
+          }
+        },
+        {
+          "name": "Get Template by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/:id",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Template",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Welcome Message\",\n    \"content\": \"Halo {{name}}! Selamat datang di layanan kami. Ada yang bisa kami bantu?\",\n    \"category\": \"greeting\",\n    \"triggers\": [\"halo\", \"hi\", \"hello\"],\n    \"isActive\": true,\n    \"useAI\": false,\n    \"priority\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates",
+              "host": ["{{base_url}}"],
+              "path": ["templates"]
+            },
+            "description": "Create new message template"
+          }
+        },
+        {
+          "name": "Update Template",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"content\": \"Updated content here\",\n    \"isActive\": true,\n    \"priority\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates/:id",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Template",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/:id",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get by Category",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/category/:category",
+              "host": ["{{base_url}}"],
+              "path": ["templates", "category", ":category"],
+              "variable": [
+                {
+                  "key": "category",
+                  "value": "greeting"
+                }
+              ]
+            },
+            "description": "Get templates by category (greeting, out_of_office, faq, general, custom)"
+          }
+        },
+        {
+          "name": "Find by Trigger",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/search/trigger?keyword=halo",
+              "host": ["{{base_url}}"],
+              "path": ["templates", "search", "trigger"],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "halo"
+                }
+              ]
+            },
+            "description": "Find template by trigger keyword"
+          }
+        },
+        {
+          "name": "Process Template",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"variables\": {\n        \"name\": \"John Doe\",\n        \"company\": \"ABC Corp\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates/:id/process",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id", "process"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Process template with variables ({{name}}, {{date}}, {{time}}, etc)"
+          }
+        },
+        {
+          "name": "Get Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/stats/summary",
+              "host": ["{{base_url}}"],
+              "path": ["templates", "stats", "summary"]
+            },
+            "description": "Get template statistics (total, active, by category)"
+          }
+        },
+        {
+          "name": "Duplicate Template",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/templates/:id/duplicate",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id", "duplicate"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Duplicate existing template"
+          }
+        },
+        {
+          "name": "Bulk Update",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"templateIds\": [\"uuid1\", \"uuid2\", \"uuid3\"],\n    \"updates\": {\n        \"isActive\": false\n    }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates/bulk-update",
+              "host": ["{{base_url}}"],
+              "path": ["templates", "bulk-update"]
+            },
+            "description": "Bulk update multiple templates (e.g., activate/deactivate)"
+          }
+        },
+        {
+          "name": "Test Template",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone\": \"6281234567890\",\n    \"variables\": {\n        \"name\": \"Test User\"\n    }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates/:id/test",
+              "host": ["{{base_url}}"],
+              "path": ["templates", ":id", "test"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Test template by sending to specific phone number"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Manual Reply",
+      "item": [
+        {
+          "name": "Send Text Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"contactId\": \"contact_uuid_here\",\n    \"message\": \"Hello! This is a manual reply from dashboard.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/manual-reply/send",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "send"]
+            },
+            "description": "Send manual text message to contact from dashboard"
+          }
+        },
+        {
+          "name": "Send Media Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "contactId",
+                  "value": "contact_uuid_here",
+                  "type": "text"
+                },
+                {
+                  "key": "caption",
+                  "value": "Check this out!",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/manual-reply/send-media",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "send-media"]
+            },
+            "description": "Send media (image, document, etc) with caption"
+          }
+        },
+        {
+          "name": "Takeover Conversation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/takeover/:contactId",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "takeover", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Take over conversation from AI (disable auto-reply for this contact)"
+          }
+        },
+        {
+          "name": "Release Conversation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/release/:contactId",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "release", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Release conversation back to AI"
+          }
+        },
+        {
+          "name": "Check Takeover Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/takeover-status/:contactId",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "takeover-status", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Check if conversation is under human takeover"
+          }
+        },
+        {
+          "name": "Get Taken Over Conversations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/taken-over?myOnly=false",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "taken-over"],
+              "query": [
+                {
+                  "key": "myOnly",
+                  "value": "false",
+                  "description": "true = only my conversations, false = all"
+                }
+              ]
+            },
+            "description": "Get list of conversations under human takeover"
+          }
+        },
+        {
+          "name": "Send Typing Indicator",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/typing/:contactId",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "typing", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Show typing indicator (auto-clears after 3 seconds)"
+          }
+        },
+        {
+          "name": "Mark as Read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/mark-read/:contactId",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "mark-read", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Mark all messages in conversation as read"
+          }
+        },
+        {
+          "name": "Get Unread Count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/unread-count",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "unread-count"]
+            },
+            "description": "Get total unread message count"
+          }
+        },
+        {
+          "name": "Get Active Conversations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/active-conversations?limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "active-conversations"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Get conversations with recent activity"
+          }
+        },
+        {
+          "name": "Search Conversations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/manual-reply/search?query=john&limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["manual-reply", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "john",
+                  "description": "Search by name or phone"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Search conversations by name or phone"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+2025/11/27-15:57:54.962 c103 Reusing MANIFEST /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/27-15:57:54.962 c103 Recovering log #738
+2025/11/27-15:57:54.990 c103 Reusing old log /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000738.log 
+2025/11/27-15:57:56.668 28e03 Level-0 table #749: started
+2025/11/27-15:57:56.689 28e03 Level-0 table #749: 338509 bytes OK
+2025/11/27-15:57:56.698 28e03 Delete type=0 #738
+2025/11/27-15:57:56.698 28e03 Manual compaction at level-0 from '\x00R\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00S\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/27-15:57:58.125 28e03 Compacting 1@1 + 7@2 files
+2025/11/27-15:57:58.180 28e03 Generated table #750@1: 88061 keys, 2238411 bytes
+2025/11/27-15:57:58.219 28e03 Generated table #751@1: 37625 keys, 2241053 bytes
+2025/11/27-15:57:58.233 28e03 Generated table #752@1: 2017 keys, 2144315 bytes
+2025/11/27-15:57:58.255 28e03 Generated table #753@1: 8380 keys, 2162172 bytes
+2025/11/27-15:57:58.292 28e03 Generated table #754@1: 27756 keys, 2215464 bytes
+2025/11/27-15:57:58.337 28e03 Generated table #755@1: 68293 keys, 2208365 bytes
+2025/11/27-15:57:58.392 28e03 Generated table #756@1: 95541 keys, 2112571 bytes
+2025/11/27-15:57:58.392 28e03 Compacted 1@1 + 7@2 files => 15322351 bytes
+2025/11/27-15:57:58.399 28e03 compacted to: files[ 0 0 7 0 0 0 0 ]
+2025/11/27-15:57:58.399 28e03 Delete type=2 #749
+2025/11/27-15:57:58.399 28e03 Delete type=2 #746
+2025/11/27-15:57:58.399 28e03 Delete type=2 #745
+2025/11/27-15:57:58.399 28e03 Delete type=2 #744
+2025/11/27-15:57:58.399 28e03 Delete type=2 #740
+2025/11/27-15:57:58.399 28e03 Delete type=2 #741
+2025/11/27-15:57:58.399 28e03 Delete type=2 #743
+2025/11/27-15:57:58.399 28e03 Delete type=2 #742
