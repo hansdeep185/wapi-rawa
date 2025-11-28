@@ -12,6 +12,7 @@ yarn.lock
 sessions/
 .wwebjs_auth/
 .wwebjs_cache/
+wa-session/
 
 # Uploads
 uploads/*

@@ -1,25 +1,27 @@
-2025/11/27-15:57:54.962 c103 Reusing MANIFEST /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/11/27-15:57:54.962 c103 Recovering log #738
-2025/11/27-15:57:54.990 c103 Reusing old log /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000738.log 
-2025/11/27-15:57:56.668 28e03 Level-0 table #749: started
-2025/11/27-15:57:56.689 28e03 Level-0 table #749: 338509 bytes OK
-2025/11/27-15:57:56.698 28e03 Delete type=0 #738
-2025/11/27-15:57:56.698 28e03 Manual compaction at level-0 from '\x00R\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00S\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/11/27-15:57:58.125 28e03 Compacting 1@1 + 7@2 files
-2025/11/27-15:57:58.180 28e03 Generated table #750@1: 88061 keys, 2238411 bytes
-2025/11/27-15:57:58.219 28e03 Generated table #751@1: 37625 keys, 2241053 bytes
-2025/11/27-15:57:58.233 28e03 Generated table #752@1: 2017 keys, 2144315 bytes
-2025/11/27-15:57:58.255 28e03 Generated table #753@1: 8380 keys, 2162172 bytes
-2025/11/27-15:57:58.292 28e03 Generated table #754@1: 27756 keys, 2215464 bytes
-2025/11/27-15:57:58.337 28e03 Generated table #755@1: 68293 keys, 2208365 bytes
-2025/11/27-15:57:58.392 28e03 Generated table #756@1: 95541 keys, 2112571 bytes
-2025/11/27-15:57:58.392 28e03 Compacted 1@1 + 7@2 files => 15322351 bytes
-2025/11/27-15:57:58.399 28e03 compacted to: files[ 0 0 7 0 0 0 0 ]
-2025/11/27-15:57:58.399 28e03 Delete type=2 #749
-2025/11/27-15:57:58.399 28e03 Delete type=2 #746
-2025/11/27-15:57:58.399 28e03 Delete type=2 #745
-2025/11/27-15:57:58.399 28e03 Delete type=2 #744
-2025/11/27-15:57:58.399 28e03 Delete type=2 #740
-2025/11/27-15:57:58.399 28e03 Delete type=2 #741
-2025/11/27-15:57:58.399 28e03 Delete type=2 #743
-2025/11/27-15:57:58.399 28e03 Delete type=2 #742
+2025/11/28-08:40:45.987 f703 Reusing MANIFEST /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/28-08:40:45.988 f703 Recovering log #845
+2025/11/28-08:40:46.020 f703 Reusing old log /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000845.log 
+2025/11/28-08:40:48.135 28a03 Level-0 table #857: started
+2025/11/28-08:40:48.143 28a03 Level-0 table #857: 567987 bytes OK
+2025/11/28-08:40:48.149 28a03 Delete type=0 #845
+2025/11/28-08:40:48.150 28a03 Manual compaction at level-0 from '\x00\\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00]\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/28-08:40:49.719 28003 Compacting 1@1 + 8@2 files
+2025/11/28-08:40:49.782 28003 Generated table #858@1: 87525 keys, 2236780 bytes
+2025/11/28-08:40:49.827 28003 Generated table #859@1: 51154 keys, 2261088 bytes
+2025/11/28-08:40:49.855 28003 Generated table #860@1: 5698 keys, 2149998 bytes
+2025/11/28-08:40:49.880 28003 Generated table #861@1: 2731 keys, 2147036 bytes
+2025/11/28-08:40:49.922 28003 Generated table #862@1: 32225 keys, 2233264 bytes
+2025/11/28-08:40:49.965 28003 Generated table #863@1: 44923 keys, 2177747 bytes
+2025/11/28-08:40:50.031 28003 Generated table #864@1: 102218 keys, 2252433 bytes
+2025/11/28-08:40:50.053 28003 Generated table #865@1: 21858 keys, 497223 bytes
+2025/11/28-08:40:50.053 28003 Compacted 1@1 + 8@2 files => 15955569 bytes
+2025/11/28-08:40:50.057 28003 compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/11/28-08:40:50.057 28003 Delete type=2 #857
+2025/11/28-08:40:50.057 28003 Delete type=2 #854
+2025/11/28-08:40:50.057 28003 Delete type=2 #851
+2025/11/28-08:40:50.057 28003 Delete type=2 #850
+2025/11/28-08:40:50.057 28003 Delete type=2 #852
+2025/11/28-08:40:50.057 28003 Delete type=2 #853
+2025/11/28-08:40:50.057 28003 Delete type=2 #847
+2025/11/28-08:40:50.057 28003 Delete type=2 #849
+2025/11/28-08:40:50.057 28003 Delete type=2 #848

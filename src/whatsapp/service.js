@@ -228,10 +228,12 @@ class WhatsAppService {
         contact.name || contact.pushname
       );
 
-      if (!aiResponse) {
-        console.log('⚠️  No AI response generated');
+      if (!aiResponse || aiResponse.trim().length === 0) {
+        console.log('⚠️  No AI response generated or empty response');
+        console.log('Response value:', aiResponse);
         return;
       }
+      console.log(`✅ AI Response ready (${aiResponse.length} chars)`);
 
       // Get chat
       const chat = await message.getChat();

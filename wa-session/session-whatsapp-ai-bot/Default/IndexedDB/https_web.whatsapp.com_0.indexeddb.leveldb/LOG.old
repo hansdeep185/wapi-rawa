@@ -1,25 +1,27 @@
-2025/11/27-15:55:37.197 1ea03 Reusing MANIFEST /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/11/27-15:55:37.197 1ea03 Recovering log #728
-2025/11/27-15:55:37.255 1ea03 Reusing old log /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000728.log 
-2025/11/27-15:55:38.916 ff03 Level-0 table #739: started
-2025/11/27-15:55:38.933 ff03 Level-0 table #739: 837524 bytes OK
-2025/11/27-15:55:38.943 ff03 Delete type=0 #728
-2025/11/27-15:55:38.945 ff03 Manual compaction at level-0 from '\x00Q\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00R\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/11/27-15:55:40.414 f703 Compacting 1@1 + 7@2 files
-2025/11/27-15:55:40.496 f703 Generated table #740@1: 88065 keys, 2237039 bytes
-2025/11/27-15:55:40.555 f703 Generated table #741@1: 36163 keys, 2239471 bytes
-2025/11/27-15:55:40.584 f703 Generated table #742@1: 1997 keys, 2142853 bytes
-2025/11/27-15:55:40.621 f703 Generated table #743@1: 8787 keys, 2164492 bytes
-2025/11/27-15:55:40.676 f703 Generated table #744@1: 27400 keys, 2213004 bytes
-2025/11/27-15:55:40.823 f703 Generated table #745@1: 70099 keys, 2212019 bytes
-2025/11/27-15:55:40.900 f703 Generated table #746@1: 93531 keys, 2068169 bytes
-2025/11/27-15:55:40.900 f703 Compacted 1@1 + 7@2 files => 15277047 bytes
-2025/11/27-15:55:40.917 f703 compacted to: files[ 0 0 7 0 0 0 0 ]
-2025/11/27-15:55:40.918 f703 Delete type=2 #739
-2025/11/27-15:55:40.918 f703 Delete type=2 #731
-2025/11/27-15:55:40.918 f703 Delete type=2 #730
-2025/11/27-15:55:40.918 f703 Delete type=2 #732
-2025/11/27-15:55:40.918 f703 Delete type=2 #733
-2025/11/27-15:55:40.918 f703 Delete type=2 #736
-2025/11/27-15:55:40.918 f703 Delete type=2 #734
-2025/11/27-15:55:40.918 f703 Delete type=2 #735
+2025/11/28-08:24:12.354 f803 Reusing MANIFEST /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/28-08:24:12.355 f803 Recovering log #834
+2025/11/28-08:24:12.368 f803 Reusing old log /Users/rahman-pdsi/Documents/@@PROJECT/12. WA API - RAWA/waapi-rawa/wa-session/session-whatsapp-ai-bot/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000834.log 
+2025/11/28-08:24:14.221 28a03 Level-0 table #846: started
+2025/11/28-08:24:14.230 28a03 Level-0 table #846: 226989 bytes OK
+2025/11/28-08:24:14.236 28a03 Delete type=0 #834
+2025/11/28-08:24:14.237 21903 Manual compaction at level-0 from '\x00[\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/28-08:24:15.687 16503 Compacting 1@1 + 8@2 files
+2025/11/28-08:24:15.755 16503 Generated table #847@1: 87636 keys, 2236223 bytes
+2025/11/28-08:24:15.804 16503 Generated table #848@1: 49936 keys, 2259685 bytes
+2025/11/28-08:24:15.836 16503 Generated table #849@1: 4627 keys, 2153360 bytes
+2025/11/28-08:24:15.861 16503 Generated table #850@1: 2781 keys, 2147381 bytes
+2025/11/28-08:24:15.910 16503 Generated table #851@1: 32226 keys, 2230535 bytes
+2025/11/28-08:24:15.961 16503 Generated table #852@1: 48119 keys, 2181536 bytes
+2025/11/28-08:24:16.144 16503 Generated table #853@1: 102322 keys, 2254452 bytes
+2025/11/28-08:24:16.160 16503 Generated table #854@1: 17980 keys, 412581 bytes
+2025/11/28-08:24:16.160 16503 Compacted 1@1 + 8@2 files => 15875753 bytes
+2025/11/28-08:24:16.166 16503 compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/11/28-08:24:16.166 16503 Delete type=2 #843
+2025/11/28-08:24:16.166 16503 Delete type=2 #842
+2025/11/28-08:24:16.166 16503 Delete type=2 #840
+2025/11/28-08:24:16.166 16503 Delete type=2 #841
+2025/11/28-08:24:16.166 16503 Delete type=2 #846
+2025/11/28-08:24:16.167 16503 Delete type=2 #837
+2025/11/28-08:24:16.167 16503 Delete type=2 #836
+2025/11/28-08:24:16.167 16503 Delete type=2 #838
+2025/11/28-08:24:16.167 16503 Delete type=2 #839
